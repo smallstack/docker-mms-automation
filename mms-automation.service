@@ -1,0 +1,19 @@
+[Unit]
+Description=MongoDB Monitoring System (mms) Automation Agent
+After=docker.service
+
+[Service]
+EnvironmentFile=/etc/environment
+Environment=MMS_API_KEY=YourAPIKey
+Environment=MMS_GROUP_ID=YourGroupId
+ExecStartPre=-/usr/bin/docker pull ulexus/mms-automation
+ExecStartPre=-/usr/bin/docker pull ibuildthecloud/systemd-docker
+ExecStartPre=-/usr/bin/docker run --rm -v /opt/bin:/opt/bin ibuildthecloud/systemd-docker
+; Note that /data/mms-automation should be owned by uid 102 (mongodb in this container)
+ExecStart=/opt/bin/systemd-docker --env run --rm --name %p -v /data/mms-automation:/data ulexus/mms-automation
+Restart=always
+RestartSec=10s
+Type=notify
+NotifyAccess=all
+TimeoutStartSec=120
+TimeoutStopSec=15
