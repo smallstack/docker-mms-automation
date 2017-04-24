@@ -1,11 +1,11 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 RUN apt-get update && apt-get install -y curl logrotate
 
 # Get latest from https://mms.mongodb.com/
-RUN curl -sSL https://mms.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-manager_2.0.6.1148-1_amd64.deb -o mms.deb
-RUN dpkg -i mms.deb
-RUN rm mms.deb
+RUN curl -OL https://cloud.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-manager_3.6.2.2060-1_amd64.ubuntu1604.deb
+RUN dpkg -i mongodb-mms-automation-agent-manager_3.6.2.2060-1_amd64.ubuntu1604.deb
+RUN rm mongodb-mms-automation-agent-manager_3.6.2.2060-1_amd64.ubuntu1604.deb
 
 ADD entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh

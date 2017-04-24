@@ -1,15 +1,15 @@
 #!/bin/bash
 set -e
 
-: ${MMS_SERVER:=https://mms.mongodb.com}
+: ${MMS_SERVER:=https://api-agents.mongodb.com}
 : ${MMS_MUNIN:=true}
 : ${MMS_CHECK_SSL_CERTS:=true}
 
 usage() {
 	{
 		echo 'Mandatory environment variables:'
-      echo ' - MMS_API_KEY '
-      echo ' - MMS_GROUP_ID '
+		echo ' - MMS_API_KEY '
+		echo ' - MMS_GROUP_ID '
 		echo 'try something like: docker run -e MMS_API_KEY=... ...'
 		echo '(see https://mms.mongodb.com/settings/automation-agent for your mmsApiKey and mmsGroupId)'
 		echo
