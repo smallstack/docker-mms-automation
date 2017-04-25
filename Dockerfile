@@ -13,7 +13,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 VOLUME /data
-RUN chown -R mongodb:mongodb /data
-USER mongodb
+# RUN chown -R mongodb:mongodb /data
+USER root
 
 CMD ["/opt/mongodb-mms-automation/bin/mongodb-mms-automation-agent","-f","/etc/mongodb-mms/automation-agent.config"]
