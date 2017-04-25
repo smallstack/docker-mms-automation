@@ -12,5 +12,5 @@ RUN chmod +x /usr/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
-USER mongodb
+# USER mongodb
 CMD ["/opt/mongodb-mms-automation/bin/mongodb-mms-automation-agent","-f","/etc/mongodb-mms/automation-agent.config"]
